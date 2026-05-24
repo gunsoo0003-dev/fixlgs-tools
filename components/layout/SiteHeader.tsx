@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+const FEEDBACK_URL = 'https://blog.naver.com/zzzlgs/224295297191';
+
 export default function SiteHeader() {
   return (
     <header className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
@@ -18,6 +20,15 @@ export default function SiteHeader() {
           >
             Image Converter
           </Link>
+
+          <a
+            href={FEEDBACK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[var(--color-primary)]"
+          >
+            Feedback / 문의
+          </a>
         </nav>
       </div>
     </header>
