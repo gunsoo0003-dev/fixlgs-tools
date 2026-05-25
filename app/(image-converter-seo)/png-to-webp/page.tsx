@@ -1,4 +1,4 @@
-import ImageConverter from '../../components/image-converter/ImageConverter';
+import ImageConverter from '@/components/tools/image-converter/ImageConverter';
 
 export const metadata = {
   title: 'PNG to WEBP Converter | Free Online Image Converter',
@@ -14,9 +14,11 @@ export default function PngToWebpPage() {
           <p className="text-sm font-semibold text-[var(--color-primary)]">
             Free Online Tool · 무료 이미지 변환기
           </p>
+
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-[var(--color-text-main)]">
             PNG to WEBP Converter
           </h1>
+
           <p className="mt-4 text-base leading-7 text-[var(--color-text-sub)]">
             Convert PNG images to WEBP directly in your browser. Useful for
             reducing image size while keeping good visual quality.

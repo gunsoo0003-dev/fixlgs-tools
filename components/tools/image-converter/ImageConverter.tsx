@@ -2,8 +2,8 @@
 
 import { ChangeEvent, DragEvent, useRef, useState } from 'react';
 
-import { convertImage } from '../../lib/image/convertImage';
-import { ImageOutputFormat } from '../../types/imageTool';
+import { convertImage } from '@/lib/image/convertImage';
+import type { ImageOutputFormat } from '@/types/imageTool';
 
 type ImageConverterProps = {
   defaultOutputFormat?: ImageOutputFormat;
@@ -117,7 +117,7 @@ export default function ImageConverter({
 
       setConvertedUrl(result.url);
       setConvertedFileName(result.fileName);
-    } catch (error) {
+    } catch {
       setErrorMessage(
         'Image conversion failed. 이미지 변환에 실패했습니다. 다른 파일로 다시 시도해 주세요.',
       );

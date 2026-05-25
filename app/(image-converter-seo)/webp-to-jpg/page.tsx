@@ -1,5 +1,5 @@
+import ImageConverter from '@/components/tools/image-converter/ImageConverter';
 import SiteHeader from '@/components/layout/SiteHeader';
-import ImageConverter from '../../components/image-converter/ImageConverter';
 
 export const metadata = {
   title: 'WEBP to JPG Converter | Free Online Image Converter',

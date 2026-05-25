@@ -1,4 +1,4 @@
-import ImageConverter from '../../components/image-converter/ImageConverter';
+import ImageConverter from '@/components/tools/image-converter/ImageConverter';
 
 export const metadata = {
   title: 'JPG to PNG Converter | Free Online Image Converter',
@@ -14,9 +14,11 @@ export default function JpgToPngPage() {
           <p className="text-sm font-semibold text-[var(--color-primary)]">
             Free Online Tool · 무료 이미지 변환기
           </p>
+
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-[var(--color-text-main)]">
             JPG to PNG Converter
           </h1>
+
           <p className="mt-4 text-base leading-7 text-[var(--color-text-sub)]">
             Convert JPG images to PNG directly in your browser. No signup, no
             upload to server, and no complicated settings.
