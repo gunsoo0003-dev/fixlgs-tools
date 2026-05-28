@@ -15,28 +15,65 @@ export default function HomePage() {
           </p>
 
           <h1 className="mt-3 text-3xl font-black tracking-tight text-[var(--color-text-main)] md:text-5xl">
-            Free Online Image Converter
+            Free Online Image Tools
           </h1>
 
           <p className="mt-2 text-xl font-bold text-[var(--color-text-sub)]">
-            무료 온라인 이미지 변환기
+            무료 온라인 이미지 도구
           </p>
 
           <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-text-sub)] md:text-base">
-            Convert JPG, PNG and WEBP images directly in your browser. No
-            sign-up, no server upload, and no complicated settings.
+            Convert and compress JPG, PNG and WEBP images directly in your
+            browser. No sign-up, no server upload, and no complicated settings.
           </p>
 
           <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-text-muted)]">
-            JPG, PNG, WEBP 이미지를 회원가입 없이 브라우저에서 바로 변환할 수
-            있습니다.
+            JPG, PNG, WEBP 이미지를 회원가입 없이 브라우저에서 바로 변환하고
+            압축할 수 있습니다.
           </p>
+        </div>
 
+        <div className="grid gap-5 md:grid-cols-2">
           <Link
             href="/image-converter"
-            className="mt-6 inline-flex rounded-2xl bg-[var(--color-primary)] px-5 py-3 text-sm font-black text-white hover:bg-[var(--color-primary-hover)]"
+            className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm transition hover:-translate-y-1 hover:border-[var(--color-primary)]"
           >
-            Open Image Converter
+            <p className="text-sm font-bold text-[var(--color-primary)]">
+              IMAGE CONVERTER
+            </p>
+
+            <h2 className="mt-3 text-2xl font-black text-[var(--color-text-main)]">
+              Free Image Converter
+            </h2>
+
+            <p className="mt-3 text-sm leading-7 text-[var(--color-text-sub)]">
+              Convert JPG, PNG and WEBP images in your browser.
+            </p>
+
+            <p className="mt-2 text-sm leading-7 text-[var(--color-text-muted)]">
+              JPG / PNG / WEBP 이미지 변환
+            </p>
+          </Link>
+
+          <Link
+            href="/image-compressor"
+            className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm transition hover:-translate-y-1 hover:border-[var(--color-primary)]"
+          >
+            <p className="text-sm font-bold text-[var(--color-primary)]">
+              IMAGE COMPRESSOR
+            </p>
+
+            <h2 className="mt-3 text-2xl font-black text-[var(--color-text-main)]">
+              Free Image Compressor
+            </h2>
+
+            <p className="mt-3 text-sm leading-7 text-[var(--color-text-sub)]">
+              Compress JPG, PNG and WEBP images in your browser.
+            </p>
+
+            <p className="mt-2 text-sm leading-7 text-[var(--color-text-muted)]">
+              JPG / PNG / WEBP 이미지 용량 줄이기
+            </p>
           </Link>
         </div>
       </section>
