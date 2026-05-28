@@ -7,6 +7,7 @@ import type { ImageOutputFormat } from '@/types/imageTool';
 
 type ImageConverterProps = {
   defaultOutputFormat?: ImageOutputFormat;
+  locale?: 'ko' | 'en';
 };
 
 const formatOptions: ImageOutputFormat[] = [
@@ -23,8 +24,10 @@ const formatLabels: Record<ImageOutputFormat, string> = {
 
 export default function ImageConverter({
   defaultOutputFormat = 'image/png',
+  locale = 'ko',
 }: ImageConverterProps) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const isEnglish = locale === 'en';
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [targetFormat, setTargetFormat] =
@@ -47,7 +50,9 @@ export default function ImageConverter({
   const handleFileSelect = (file: File) => {
     if (!file.type.startsWith('image/')) {
       setErrorMessage(
-        'Please upload an image file. 이미지 파일만 업로드할 수 있습니다.',
+        isEnglish
+          ? 'Please upload an image file.'
+          : '이미지 파일만 업로드할 수 있습니다.',
       );
       return;
     }
@@ -100,7 +105,9 @@ export default function ImageConverter({
   const handleConvert = async () => {
     if (!selectedFile) {
       setErrorMessage(
-        'Please upload an image first. 먼저 이미지를 업로드해 주세요.',
+        isEnglish
+          ? 'Please upload an image first.'
+          : '먼저 이미지를 업로드해 주세요.',
       );
       return;
     }
@@ -119,7 +126,9 @@ export default function ImageConverter({
       setConvertedFileName(result.fileName);
     } catch {
       setErrorMessage(
-        'Image conversion failed. 이미지 변환에 실패했습니다. 다른 파일로 다시 시도해 주세요.',
+        isEnglish
+          ? 'Image conversion failed. Please try again with another file.'
+          : '이미지 변환에 실패했습니다. 다른 파일로 다시 시도해 주세요.',
       );
     } finally {
       setIsConverting(false);
@@ -131,12 +140,13 @@ export default function ImageConverter({
       <div className="flex flex-col gap-6">
         <div>
           <h2 className="text-2xl font-bold text-[var(--color-text-main)]">
-            Image Converter
+            {isEnglish ? 'Image Converter' : '이미지 변환기'}
           </h2>
-          <p className="mt-2 text-sm text-[var(--color-text-sub)]">
-            Convert JPG, PNG, and WEBP images directly in your browser.
-            <br />
-            JPG, PNG, WEBP 이미지를 브라우저에서 바로 변환할 수 있습니다.
+
+          <p className="mt-2 text-sm leading-6 text-[var(--color-text-sub)]">
+            {isEnglish
+              ? 'Convert JPG, PNG, and WEBP images directly in your browser.'
+              : 'JPG, PNG, WEBP 이미지를 브라우저에서 바로 변환할 수 있습니다.'}
           </p>
         </div>
 
@@ -167,25 +177,30 @@ export default function ImageConverter({
           />
 
           <p className="text-lg font-semibold text-[var(--color-text-main)]">
-            Drag & drop your image here
+            {isEnglish
+              ? 'Drag & drop your image here'
+              : '이미지를 여기에 끌어다 놓으세요'}
           </p>
+
           <p className="mt-2 text-sm text-[var(--color-text-sub)]">
-            or click to upload
+            {isEnglish ? 'or click to upload' : '또는 클릭해서 업로드'}
           </p>
+
           <p className="mt-4 text-xs text-[var(--color-text-sub)]">
             JPG · PNG · WEBP supported
           </p>
 
           {selectedFile && (
             <div className="mt-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-text-main)]">
-              Selected file: {selectedFile.name}
+              {isEnglish ? 'Selected file: ' : '선택한 파일: '}
+              {selectedFile.name}
             </div>
           )}
         </div>
 
         <div className="flex flex-col gap-3">
           <label className="text-sm font-semibold text-[var(--color-text-main)]">
-            Convert to
+            {isEnglish ? 'Convert to' : '변환 형식'}
           </label>
 
           <div className="grid grid-cols-3 gap-3">
@@ -221,7 +236,13 @@ export default function ImageConverter({
           disabled={isConverting}
           className="rounded-2xl bg-[var(--color-primary)] px-5 py-4 text-base font-bold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {isConverting ? 'Converting...' : 'Convert Image'}
+          {isConverting
+            ? isEnglish
+              ? 'Converting...'
+              : '변환 중...'
+            : isEnglish
+              ? 'Convert Image'
+              : '이미지 변환하기'}
         </button>
 
         {convertedUrl && (
@@ -230,7 +251,7 @@ export default function ImageConverter({
             download={convertedFileName}
             className="rounded-2xl border border-[var(--color-primary)] bg-[var(--color-surface)] px-5 py-4 text-center text-base font-bold text-[var(--color-primary)] transition hover:bg-[var(--color-primary-soft)]"
           >
-            Download Converted Image
+            {isEnglish ? 'Download Converted Image' : '변환된 이미지 다운로드'}
           </a>
         )}
       </div>

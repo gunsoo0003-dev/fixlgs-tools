@@ -5,19 +5,19 @@ import SiteHeader from '@/components/layout/SiteHeader';
 import ImageConverterPageContent from '@/components/tools/image-converter/ImageConverterPageContent';
 
 export const metadata: Metadata = {
-  title: '무료 이미지 변환기 | JPG PNG WEBP 변환 | FIXLGS',
+  title: 'Free Online Image Converter | JPG PNG WEBP Converter | FIXLGS',
   description:
-    '무료 이미지 변환기로 JPG, PNG, WEBP 이미지를 브라우저에서 바로 변환하세요. 파일은 서버에 저장되지 않고 브라우저에서 처리됩니다.',
+    'Convert JPG, PNG and WEBP images online for free. Browser-based image converter with no signup and no server upload.',
 };
 
-export default function ImageConverterPage() {
+export default function EnglishImageConverterPage() {
   return (
     <main className="min-h-screen bg-[var(--color-page)] text-[var(--color-text-main)]">
-      <SiteHeader locale="ko" />
+      <SiteHeader locale="en" />
 
-      <ImageConverterPageContent locale="ko" />
+      <ImageConverterPageContent locale="en" />
 
-      <SiteFooter locale="ko" />
+      <SiteFooter locale="en" />
     </main>
   );
 }

@@ -1,4 +1,10 @@
-export default function SiteFooter() {
+type SiteFooterProps = {
+  locale?: 'ko' | 'en';
+};
+
+export default function SiteFooter({ locale = 'ko' }: SiteFooterProps) {
+  const isEnglish = locale === 'en';
+
   return (
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-5 px-5 py-7 text-sm text-[var(--color-text-muted)] md:flex-row md:items-start md:justify-between">
@@ -9,9 +15,11 @@ export default function SiteFooter() {
             Files are processed in your browser and are not stored on our server.
           </p>
 
-          <p className="mt-2">
-            파일은 서버에 저장되지 않고 사용자 브라우저에서 처리됩니다.
-          </p>
+          {!isEnglish && (
+            <p className="mt-2">
+              파일은 서버에 저장되지 않고 사용자 브라우저에서 처리됩니다.
+            </p>
+          )}
         </div>
 
         <nav className="flex flex-wrap gap-4 font-semibold text-[var(--color-text-main)]">
