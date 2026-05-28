@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, DragEvent, useRef, useState } from 'react';
+import { ChangeEvent, DragEvent, useEffect, useRef, useState } from 'react';
 
 import { compressImage } from '@/lib/image/compressImage';
 import type { ImageCompressorFormat } from '@/types/imageCompressor';
@@ -20,6 +20,18 @@ const formatLabels: Record<ImageCompressorFormat, string> = {
   'image/jpeg': 'JPG',
   'image/png': 'PNG',
   'image/webp': 'WEBP',
+};
+
+const koreanDescriptions: Record<ImageCompressorFormat, string> = {
+  'image/jpeg': 'JPG 이미지를 브라우저에서 바로 압축할 수 있습니다.',
+  'image/png': 'PNG 이미지를 브라우저에서 바로 압축할 수 있습니다.',
+  'image/webp': 'WEBP 이미지를 브라우저에서 바로 압축할 수 있습니다.',
+};
+
+const englishDescriptions: Record<ImageCompressorFormat, string> = {
+  'image/jpeg': 'Compress JPG images directly in your browser.',
+  'image/png': 'Compress PNG images directly in your browser.',
+  'image/webp': 'Compress WEBP images directly in your browser.',
 };
 
 function formatFileSize(size: number) {
@@ -53,6 +65,12 @@ export default function ImageCompressor({
   const [isCompressing, setIsCompressing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const defaultFormatLabel = formatLabels[defaultOutputFormat];
+
+  useEffect(() => {
+    setTargetFormat(defaultOutputFormat);
+  }, [defaultOutputFormat]);
 
   const resetCompressedFile = () => {
     if (compressedUrl) {
@@ -163,13 +181,15 @@ export default function ImageCompressor({
       <div className="flex flex-col gap-6">
         <div>
           <h2 className="text-2xl font-bold text-[var(--color-text-main)]">
-            {isEnglish ? 'Image Compressor' : '이미지 압축기'}
+            {isEnglish
+              ? `${defaultFormatLabel} Compressor`
+              : `${defaultFormatLabel} 압축기`}
           </h2>
 
           <p className="mt-2 text-sm leading-6 text-[var(--color-text-sub)]">
             {isEnglish
-              ? 'Compress JPG, PNG, and WEBP images directly in your browser.'
-              : 'JPG, PNG, WEBP 이미지를 브라우저에서 바로 압축할 수 있습니다.'}
+              ? englishDescriptions[defaultOutputFormat]
+              : koreanDescriptions[defaultOutputFormat]}
           </p>
         </div>
 
@@ -295,8 +315,8 @@ export default function ImageCompressor({
               ? 'Compressing...'
               : '압축 중...'
             : isEnglish
-              ? 'Compress Image'
-              : '이미지 압축하기'}
+              ? `Compress ${defaultFormatLabel} Image`
+              : `${defaultFormatLabel} 이미지 압축하기`}
         </button>
 
         {compressedUrl && (
