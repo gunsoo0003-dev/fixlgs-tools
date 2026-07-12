@@ -23,13 +23,14 @@ export default function HomePage() {
           </p>
 
           <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-text-sub)] md:text-base">
-            Convert and compress JPG, PNG and WEBP images directly in your
-            browser. No sign-up, no server upload, and no complicated settings.
+            Convert, compress and create JPG, PNG and WEBP images directly in
+            your browser. No sign-up, no server upload, and no complicated
+            settings.
           </p>
 
           <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-text-muted)]">
-            JPG, PNG, WEBP 이미지를 회원가입 없이 브라우저에서 바로 변환하고
-            압축할 수 있습니다.
+            JPG, PNG, WEBP 이미지를 회원가입 없이 브라우저에서 변환하고
+            압축하거나 글 이미지와 워터마크를 만들 수 있습니다.
           </p>
         </div>
 
@@ -75,6 +76,41 @@ export default function HomePage() {
               JPG / PNG / WEBP 이미지 용량 줄이기
             </p>
           </Link>
+
+          <a
+            href="https://studio.fixlgs.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm transition hover:-translate-y-1 hover:border-[var(--color-primary)] md:col-span-2"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-bold text-[var(--color-primary)]">
+                  IMAGE STUDIO
+                </p>
+
+                <h2 className="mt-3 text-2xl font-black text-[var(--color-text-main)]">
+                  FIXLGS Image Studio
+                </h2>
+              </div>
+
+              <span
+                className="text-lg font-black text-[var(--color-primary)]"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </div>
+
+            <p className="mt-3 text-sm leading-7 text-[var(--color-text-sub)]">
+              Create text images, transparent watermarks and apply watermarks
+              directly in your browser.
+            </p>
+
+            <p className="mt-2 text-sm leading-7 text-[var(--color-text-muted)]">
+              글 이미지 제작, 워터마크 만들기와 이미지 적용 도구
+            </p>
+          </a>
         </div>
       </section>
 
